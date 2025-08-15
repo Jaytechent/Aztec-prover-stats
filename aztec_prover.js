@@ -150,7 +150,7 @@ class OptimizedProverClient {
       participatedCountWindow: participatedCount,
       totalRewardsWindow: totalRewards,
       isActiveNow: lastEpochParticipated !== null && 
-                 (currentEpoch - lastEpochParticipated < 6),
+                 (currentEpoch - lastEpochParticipated < 10),
       window: lookback,
       fetchTime: Date.now() - startTime
     };
@@ -160,7 +160,7 @@ class OptimizedProverClient {
   }
 }
 
-function formatProverMessage(stats, { epochHours = 5, shares = null } = {}) {
+function formatProverMessage(stats, { epochHours = 1, shares = null } = {}) {
   const {
     prover,
     currentEpoch,
@@ -188,12 +188,16 @@ function formatProverMessage(stats, { epochHours = 5, shares = null } = {}) {
   lines.push("");
   lines.push("📊 PARTICIPATION");
   lines.push(`✅ Epochs Participated: ${participatedCountWindow}`);
-  lines.push(`💰 Rewards : ${ethers.formatEther(totalRewardsWindow)} ETH`);
+  lines.push(`💰 Rewards : ${ethers.formatEther(totalRewardsWindow)} STK`);
   lines.push(`⏱️ Time Since Last Proof: ${idleEpochs == null ? "N/A" : `${idleHours}h (~${idleEpochs} epoch${idleEpochs===1?"":"s"})`}`);
+  lines.push("");
+  lines.push("🔔 *Follow us on Twitter* to stay tuned for future news about Aztec and our bot:");
+lines.push("[🔗 https://x.com/HallenjayArt](https://x.com/HallenjayArt)");
   return lines.join("\n");
-
+ 
 
 }
+
 
 
 async function checkWatchlist(client) {
