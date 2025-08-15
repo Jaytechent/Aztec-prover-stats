@@ -5,6 +5,7 @@ const axios = require("axios");
 
 // Config
 const CACHE_TTL = 60; // 1 minute cache
+
 const RPC_TIMEOUT = 15000; // 15 seconds per RPC call
 const BATCH_SIZE = 50; // Process epochs in batches
 const EPOCH_DELAY = 50; // ms between batches
@@ -175,7 +176,7 @@ function formatProverMessage(stats, { epochHours = 1, shares = null } = {}) {
   const idleHours = idleEpochs == null ? "N/A" : (idleEpochs * epochHours);
 
   const lines = [];
-  lines.push("🔷 PROVER NODE DETAILS ADVERSARIA TESTNET🔷");
+  lines.push("🔷 PROVER NODE DETAILS ON ADVERSARIA TESTNET🔷");
   lines.push("");
   lines.push(`${isActiveNow ? "🟢" : "🔴"} Status: ${isActiveNow ? "Actively proving" : "Idle"}`);
   lines.push("");
@@ -189,7 +190,7 @@ function formatProverMessage(stats, { epochHours = 1, shares = null } = {}) {
   lines.push("📊 PARTICIPATION");
   lines.push(`✅ Epochs Participated: ${participatedCountWindow}`);
   lines.push(`💰 Rewards : ${ethers.formatEther(totalRewardsWindow)} STK`);
-  lines.push(`⏱️ Time Since Last Proof: ${idleEpochs == null ? "N/A" : `${idleHours}h (~${idleEpochs} epoch${idleEpochs===1?"":"s"})`}`);
+  lines.push(`⏱️ Time Since Last Proof: ${idleEpochs == null ? "N/A" : `${idleHours}0m (~${idleEpochs} epoch${idleEpochs===1?"":"s"})`}`);
   lines.push("");
   lines.push("🔔 *Follow us on Twitter* to stay tuned for future news about Aztec and our bot:");
 lines.push("[🔗 https://x.com/HallenjayArt](https://x.com/HallenjayArt)");
