@@ -2,11 +2,16 @@ require('dotenv').config();
 const { Telegraf } = require('telegraf');
 const { ethers } = require('ethers');
 const axios = require('axios');
+const express = require("express");
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
 
 // Config
 const {
   BOT_TOKEN,
-  SERVER_URL = "http://localhost:3000",
+  SERVER_URL,
   ALERT_IF_IDLE_EPOCHS = "6",
   CHECK_INTERVAL_SEC = "1800",
 } = process.env;
@@ -211,6 +216,15 @@ async function monitorOnce() {
     console.error("Monitoring error:", e.message);
   }
 }
+
+
+app.get("/", (req, res) => {
+  res.send("Bot is running 🚀");
+});
+
+app.listen(PORT, () => {
+  console.log(`🌐 Express server running on port ${PORT}`);
+});
 
 // Error handling
 bot.catch((err, ctx) => {
