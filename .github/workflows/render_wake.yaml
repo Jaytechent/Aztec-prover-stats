@@ -1,0 +1,15 @@
+name: Auto-trigger-render
+
+on:
+  schedule:
+  - cron: "*/50 * * * *"  # every 50mins
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  trigger-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger endpoint
+        run: |
+          curl https://aztec-real-bot.onrender.com/
