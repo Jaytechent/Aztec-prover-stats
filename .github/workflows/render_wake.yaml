@@ -2,7 +2,7 @@ name: Auto-trigger-render
 
 on:
   schedule:
-  - cron: "*/50 * * * *"  # every 50mins
+  - cron: "*/20 * * * *"  # every 20mins
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
