@@ -271,7 +271,7 @@ app.get("/scan", async (req, res) => {
 
 app.get("/scan-text", async (req, res) => {
   try {
-    const { prover, lookback = 600, epochHours = 5 } = req.query;
+    const { prover, lookback = 1000, epochHours = 5 } = req.query;
     if (!prover) return res.status(400).send("Missing prover address");
 
     const cacheKey = `scan-text-${prover}-${lookback}`;
